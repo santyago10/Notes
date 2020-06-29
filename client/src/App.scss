@@ -1,0 +1,40 @@
+$formWidth: 250px;
+$formMargin: 5px;
+$buttonWidth: 100px;
+$buttonHeight: 40px;
+
+.create-form, .edit-form {
+  width: $formWidth;
+  position: absolute;
+  left: 300px;
+  border: 2px solid rgba(206, 206, 206, 0.678);
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1;
+  background-color: white;
+  input {
+    margin: $formMargin;
+    width: 95%;
+  }
+  button {
+    margin: $formMargin;
+  }
+}
+
+table { 
+  max-width: 400px;
+  position: absolute;
+  left: 50%;
+  margin-left: -200px;
+}
+
+.note-info {
+  max-width: 200px;
+  overflow-x: auto;
+}
+
+.language-button {
+  margin: 5px;
+}
+
+
