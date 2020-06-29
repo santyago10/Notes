@@ -12,7 +12,7 @@ export class EditForm extends React.Component{
         { noteStore.russian ? 
         ( <Form id = "edit-form">
             <Form.Group controlId="formGroupEmail">
-                <Form.Label>Описание</Form.Label>
+                <Form.Label>Изменить заметку</Form.Label>
                 <Form.Control type="text" placeholder="Введите описание" value = { noteModel.info }
                 onChange = { e => noteModel.setInfo( e.target.value ) } />
             </Form.Group>
@@ -23,7 +23,7 @@ export class EditForm extends React.Component{
         ) :
         ( <Form id = "edit-form">
             <Form.Group controlId="formGroupEmail">
-                <Form.Label>Info</Form.Label>
+                <Form.Label>Edit note</Form.Label>
                 <Form.Control type="text" placeholder="Enter info" value = { noteModel.info }
                 onChange = { e => noteModel.setInfo( e.target.value ) } />
             </Form.Group>

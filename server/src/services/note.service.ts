@@ -36,7 +36,10 @@ class NoteService {
   public getById = async ( id ) => {
     try{
       const note = await this.noteRepository.findOne( id );
+      if( note )
       return ( note );
+      else 
+      return ( "Not found" );
     }
     catch( error ){
       return error;

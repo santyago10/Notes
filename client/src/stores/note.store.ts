@@ -5,10 +5,16 @@ import Note from "../models/note.model";
 const service: ApiServices = new ApiServices();
 let targetId: number;
 
+export const noteModel = Note.create({
+    id: 0
+});
+
 export const NoteList = types.model({
     notes: types.array( Note ),
     createForm: types.optional( types.boolean, false ),
     editForm: types.optional( types.boolean, false ),
+    showAllButton: types.optional( types.boolean, false),
+    createButton: types.optional( types.boolean, false),
     russian: types.optional( types.boolean, false )
 })
 .actions( self => ({
@@ -21,10 +27,36 @@ export const NoteList = types.model({
             alert( "Unknown error, try again" );
         }
         else{
-            self.notes = self.notes = ( function (arr) {
+            self.notes = self.notes = ( function ( arr ) {
                 return arr.sort( ( a, b ) => a.id > b.id ? 1 : -1 );
             })( result );
+            self.showAllButton = false;
+            self.createButton = true;
         }
+    },
+
+    async getNoteById( id ){
+        let result = await service.getNoteById( id );
+
+        if( id === ""){
+            alert( "Id required" );
+        }
+        else{
+            if( result.toString().includes( "Network Error" )  ){
+                alert( "Server error, try again later" );
+            }
+            else if( result.message ){
+                alert( "Unknown error, try again" );
+            }
+            else if( result === "Not found"){
+                alert( "Not found" );
+            }
+            else{
+                self.notes.splice( 0, self.notes.length, result );
+                self.showAllButton = true;
+                self.createButton = false;
+            }
+        } 
     },
 
     async deleteNote( e, id ){
@@ -40,7 +72,7 @@ export const NoteList = types.model({
         else{
             for( let i = 0; i < self.notes.length; i++ )
             {
-                if(self.notes[i].id === id)
+                if( self.notes[i].id === id )
                 {
                     self.notes.splice(i, 1);
                     self.createForm = false;
@@ -82,7 +114,6 @@ export const NoteList = types.model({
                 self.createForm = false;
                 noteModel.setInfo( "" );
             }
-            
         }   
     },
 
@@ -164,9 +195,5 @@ export const NoteList = types.model({
 }))
 
 export const noteStore = NoteList.create();
-
-export const noteModel = Note.create({
-    id: 0
-});
 
 unprotect( noteStore );

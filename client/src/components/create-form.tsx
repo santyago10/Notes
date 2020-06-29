@@ -12,7 +12,7 @@ export class CreateForm extends React.Component{
         { noteStore.russian ? 
         ( <Form id = 'create-form'>
             <Form.Group controlId="formGroupEmail">
-                <Form.Label>Описаниие</Form.Label>
+                <Form.Label>Создать заметку</Form.Label>
                 <Form.Control type="text" placeholder = "Введите описание" value = { noteModel.info }
                 onChange = { e => noteModel.setInfo( e.target.value ) } />
             </Form.Group>
@@ -23,7 +23,7 @@ export class CreateForm extends React.Component{
         ) :
         ( <Form id = 'create-form'>
         <Form.Group controlId="formGroupEmail">
-            <Form.Label>Info</Form.Label>
+            <Form.Label>Create note</Form.Label>
             <Form.Control type="text" placeholder="Enter info" value = { noteModel.info }
             onChange = { e => noteModel.setInfo( e.target.value ) } />
         </Form.Group>
@@ -35,20 +35,3 @@ export class CreateForm extends React.Component{
        </div>
     }
 }
-
-
-
-// export const CreateForm =  observer( props =>(
-//     <div className = 'create-form' id = 'create-form'>
-//     <Form>
-//     <Form.Group controlId="formGroupEmail">
-//         <Form.Label>Info</Form.Label>
-//         <Form.Control type="text" placeholder="Enter info" value = { noteModel.info }
-//         onChange = { e => noteModel.setInfo( e.target.value ) } />
-//     </Form.Group>
-//     <MyButton title = "Create" 
-//         onClick = { e => { noteStore.createNote(e, noteModel.info ) } }/>
-//     <MyButton title = "Cancel" onClick = { e => { noteStore.hideCreateForm( e ) } }/>
-//     </Form>
-//    </div>
-// ) )
