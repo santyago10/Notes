@@ -17,7 +17,7 @@
     "@types/passport-http": "^0.3.8",
     "@types/passport-local": "^1.0.33",
     "class-transformer": "^0.2.3",
-    "class-validator": "^0.11.0",
+    "class-validator": "^0.14.0",
     "cors": "^2.8.5",
     "envalid": "^6.0.1",
     "es6-shim": "^0.35.5",
